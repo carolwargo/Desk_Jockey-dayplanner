@@ -1,62 +1,80 @@
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    width: 50%;
+// Display the current date and time
+function displayDateTime() {
+    var todayDate = dayjs().format('dddd, MMM Do YYYY');
+    $('#currentDay').text(todayDate);
+    
+    setInterval(function(){
+      var currentTime = dayjs().format('h:mm:ss A');
+      $('#currentTime').text(currentTime);
+    }, 1000);
   }
   
-  textarea {
-    background: transparent;
-    border: none;
-    resize: none;
-    color: #000000;
-    border-left: 1px solid black;
-    padding: 10px;
-  }
-  
-  .description {
-    white-space: pre-wrap;
+  // Color-code time blocks based on current time
+  var blockHour;
 
+  function colorCodeBlocks() {
+    var currentHour = dayjs().hour();
+    console.log('Current hour:', currentHour);
+  
+    $(".time-block").each(function(){
+      var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+      console.log('Block hour:', blockHour);
+  
+      if (blockHour < currentHour) {
+        $(this).addClass("past");
+        $(this).removeClass("present");
+        $(this).removeClass("future");
+       
+      }
+      else if (blockHour === currentHour) {
+        $(this).removeClass("past");
+        $(this).removeClass("future");
+        $(this).addClass("present");
+      }
+      else {
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+        $(this).addClass("future");
+      }
+
+    });
+  }
+ 
+  // Save task text to local storage
+  $(".saveBtn").on("click", function () {
+    var taskText = $(this).siblings(".description").val();
+    var taskTime = $(this).parent().attr("id");
+  
+    localStorage.setItem(taskTime, taskText);
+  });
+  
+  // Load saved tasks from local storage
+  function loadSavedTasks() {
+    $(".time-block").each(function(){
+      var taskTime = $(this).attr("id");
+      var taskText = localStorage.getItem(taskTime);
+  
+      if (taskText) {
+        $(this).find(".description").val(taskText);
+      }
+    });
   }
   
-  .time-block {
-    border-radius: 15px;
-  }
+  $(document).ready(function(){
+    displayDateTime();
+    colorCodeBlocks();
+    loadSavedTasks();
+  });
   
-  .row {
-    border-top: 1px solid white;
-  }
+  // Call colorCodeBlocks() every minute to update time block colors
+  setInterval(colorCodeBlocks, 60000);
   
-  .hour {
-    background-color: #ffffff;
-    color: #000000;
-    border-top: 1px dashed #000000;
-  }
+  var currentHour = dayjs().hour();
+  console.log('Current hour:', currentHour);
   
-  .past {
-    background-color: #d3d3d3 ;
-    color: white;
-  }
+  $(".time-block").each(function(){
+    var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+   
+  })
   
-  .present {
-    background-color: #ff6961;
-    color: white;
-  }
-  
-  .future {
-    background-color: #77dd77;
-    color: white;
-  }
-  
-  .saveBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #06aed5;
-    color: white;
-  }
-  
-  .saveBtn i:hover {
-    font-size: 20px;
-    transition: all 0.3s ease-in-out;
-  }
   
