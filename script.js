@@ -78,6 +78,7 @@ function displayDateTime() {
   })
   
   
+<<<<<<< HEAD
   console.log("localStorage");
   // Set a test value in local storage
 localStorage.setItem("test", "This is a test value");
@@ -92,3 +93,5 @@ localStorage.setItem("hour" + hour, "This is a test value for hour " + hour);
 // Retrieve the test value for the specific hour from local storage and log it to the console
 console.log(localStorage.getItem("hour" + hour));
 
+=======
+>>>>>>> 772e940aa8f13c5372bddf91cfc4c59a7414f5b7
