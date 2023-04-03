@@ -18,7 +18,8 @@ When a User opens the daily planner to create a schedule, the current day is dis
 ```
 # SCREENSHOT
 ```
-https://github.com/carolwargo/JS-Password-Generator/blob/f2052f50a08e5df7d41f1ef998caffb7ac869c03/Full%20page%20screenshot.png
+[https://github.com/carolwargo/Workday-Scheduler/blob/main/DayPlannerScreenShot.png](https://github.com/carolwargo/Workday-Scheduler/blob/5b21bc848f70ab98b6f8fd2d5e735ed261a5f1d1/DayPlannerScreenShot.png)
+
 
 ```
 ## USER STORY
@@ -38,10 +39,5 @@ To use the simple Day Planner, click on desired hour block, enter task and click
 # AUTHORS
 - Carol Wargo  ([@carolwargo](https://github.com/carolwargo))
 
-
-
-
 ## Github link
 https://github.com/carolwargo/Workday-Scheduler.git
-
-[https://github.com/carolwargo/Workday-Scheduler/blob/main/DayPlannerScreenShot.png](https://github.com/carolwargo/Workday-Scheduler/blob/5b21bc848f70ab98b6f8fd2d5e735ed261a5f1d1/DayPlannerScreenShot.png)
